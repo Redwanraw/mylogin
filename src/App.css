@@ -1,0 +1,43 @@
+.AApp{
+  border: 5px red solid;
+  text-align: center;
+}
+.rRegister{
+  border: 5px blue solid;
+}
+.aabut {
+  border: 5px blue solid;
+}
+
+.Contactt{
+  border: 5px greenyellow solid;
+}
+.lLogin{
+  border: 5px greenyellow solid;
+}
+.non{
+  display: none;
+}
+#container {
+  overflow:hidden;
+  position:relative;
+}
+#hideMe {
+  -webkit-animation: cssAnimation 5s forwards; 
+  animation: cssAnimation 5s forwards;
+}
+@keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+}/* This only changes this particular animation duration */
+.animate__fadeOut {
+  --animate-duration: 5s;
+}
+
+/* This changes all the animations globally */
