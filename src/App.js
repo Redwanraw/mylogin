@@ -1,5 +1,5 @@
 import { setSelectionRange } from '@testing-library/user-event/dist/utils';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './App.css';
 import Lickcount from './Componet/Lickcount';
 import Abut from './Componet/Abut';
@@ -7,6 +7,9 @@ import jsimg from './img/1.png';
 import Register from './Componet/Register';
 import Login from './Componet/Login';
 import axios from 'axios';
+import { BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
+import Api from "./Componet/Api"
+
 function App() {
 
 {/*
@@ -33,7 +36,7 @@ function App() {
 */}
 
 const [ isLoginPage,setisLoginPage]=useState(true)
-const [user, setuser] = useState({email:'1234' , password:'1234'})
+const [user, setuser] = useState({email:'1234' , password:'1234' , user:'redwan'})
 
 
 {
@@ -60,7 +63,6 @@ console.log("GETDATA",response.data)
 }
 
   return (
-
     <div className="App">
       {/*
 <Abut  name="redwan" pothsn="scrept" obj={{age:20,lack:50}}/>
@@ -68,17 +70,21 @@ console.log("GETDATA",response.data)
 <Abut name="mohmd" pothsn="strac" obj={{age:40,lack:70}}/>
       */}
 {
-  isLoginPage ?
+  isLoginPage === true &&
   (
   <>
 
-  <Register userInfo={user} onClick={(e)=>{
+  <Register userInfo={user}  onClick={()=>{
      setisLoginPage(false)
          }} />
-  </>):
-  (
+  </>
+  )
+  
+  }{
+   isLoginPage === false &&
+   (
     <>
-    <Login userInfo={user} onClick={(e)=>{
+    <Login userInfo={user}  onClick={()=>{
       setisLoginPage(true)
      }}/>
 
@@ -87,6 +93,7 @@ console.log("GETDATA",response.data)
 }
 
 </div>
+
   );
 }
 
