@@ -4,13 +4,16 @@ import lock from "../img/lock.png"
 import imgicom from "../img/correct.png" 
 import add_user from "../img/add-user.png" 
 import Login from "./Login"
+
+
 export default function Register(props){
+const [user,setuser]=useState('')
 const [email,setemail]=useState('')
 const [password, setpassword] = useState('')
 const [check, setcheck] = useState('')
  
 const checkuser=(()=>{
-    if(email===props.userInfo.email && password===props.userInfo.password){
+    if(email===props.userInfo.email && password===props.userInfo.password && user===props.userInfo.user){
         setcheck(true)
     }else{
         setcheck(false)
@@ -47,7 +50,8 @@ const checkuser=(()=>{
      )}
             <div className="input-group mb-3">
                 <span className="input-group-text " id="basic-addon1">@</span>
-                <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                <input onChange={(e)=>{
+                    setuser(e.target.value)}} type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
             </div>
             <div className="input-group mb-3">
                 <input onChange={(e)=>{

@@ -4,6 +4,10 @@ import lock from "../img/lock.png"
 import add_user from "../img/add-user.png" 
 import Register from "./Register"
 import imgicom from "../img/correct.png" 
+import Api from "../Componet/Api"
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Link } from "react-router-dom"
+
 export default function Login(props){
     const [email,setemail]=useState('')
     const [password, setpassword] = useState('')
@@ -17,8 +21,8 @@ export default function Login(props){
         }
         
     })
-    
     return(
+        <Router>
         <div className="Login">
 
         <form className=" mt-5 w-50 text-center position-absolute top-50 start-50 translate-middle " id="forms" action="/index.html">
@@ -27,13 +31,10 @@ export default function Login(props){
     {
     check === true &&
     (
-    <>
-      <div className="alert alert-success d-flex align-items-center " id="" role="alert">
-         <div ><img src={imgicom}/> 
-            An example success alert with an icon
-         </div>
-      </div>        
-    </>
+
+   <Routes>
+                <Route exact  path="/Api/:id" element={<Api/>}/>
+                </Routes>
     )}
 
     {    
@@ -64,11 +65,15 @@ export default function Login(props){
                 <img src={add_user} /> <a onClick={()=>{props.onClick()}} className="text-dark  font">Create a new account </a>
 
             </div>
+
+            
             <button onClick={(e)=>{
                 checkuser()
-                e.preventDefault()}} type="button d-block" className="btn btn-light" >Light</button>
-
+                e.preventDefault()}} type="button d-block" className="btn btn-light" >Light </button>
+<h1 ><Link to={'/Api'}>href</Link></h1>
             </form>
         </div>
+        </Router>
+
     )
 }
