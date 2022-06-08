@@ -1,15 +1,21 @@
 import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 import React, { useState,useEffect } from 'react';
 import './App.css';
-import Lickcount from './Componet/Lickcount';
-import Abut from './Componet/Abut';
-import jsimg from './img/1.png';
 import Register from './Componet/Register';
 import Login from './Componet/Login';
-import axios from 'axios';
-import { BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
+import {  Route ,Routes } from 'react-router-dom';
 import Api from "./Componet/Api"
+import Romantic from "./Componet/Romantic";
+import Drama from "./Componet/Drama"
+import Comedy from "./Componet/Comedy"
+import Action  from "./Componet/Action";
+import Head from "./Componet/head";
+import Vid from "./Componet/Vid";
 
+const vid = function changevid(buttonlink) { 
+    document.getElementById('change').src = buttonlink ;
+    console.log("run")
+}
 function App() {
 
 {/*
@@ -33,13 +39,7 @@ function App() {
   return <Lickcount obj={elem} key={i}/>
 
   });
-*/}
 
-const [ isLoginPage,setisLoginPage]=useState(true)
-const [user, setuser] = useState({email:'1234' , password:'1234' , user:'redwan'})
-
-
-{
 
   /*\
   \\
@@ -62,38 +62,36 @@ console.log("GETDATA",response.data)
   */
 }
 
+const [ isLoginPage,setisLoginPage]=useState(true)
+const [user, setuser] = useState({email:'1234' , password:'1234' , user:'redwan'})
+
+
+
+
+
   return (
     <div className="App">
+
+      <Routes>
+        <Route path='/' element = {<Register userInfo={user}  />}/>
+        <Route path='/Login' element={  <Login userInfo={user} /> }/>
+        <Route  path='/Api' element={  <Api/>}/>
+        <Route  path='/Romantic' element={  <Romantic/>}/>
+        <Route  path='/Drama' element={  <Drama vid={vid}/>}/>
+        <Route  path='/vid' element={  <Vid vid={vid}><Drama /></Vid>}/>
+        <Route  path='/Comedy' element={  <Comedy/>}/>
+        <Route  path='/Action' element={  <Action/>}/>
+        <Route  path='/Hider' element={  <Head/>}/>
+
+      </Routes>
+
       {/*
 <Abut  name="redwan" pothsn="scrept" obj={{age:20,lack:50}}/>
 <Abut name="ragb" pothsn="full" obj={{age:30,lack:60}} />
 <Abut name="mohmd" pothsn="strac" obj={{age:40,lack:70}}/>
       */}
-{
-  isLoginPage === true &&
-  (
-  <>
-
-  <Register userInfo={user}  onClick={()=>{
-     setisLoginPage(false)
-         }} />
-  </>
-  )
-  
-  }{
-   isLoginPage === false &&
-   (
-    <>
-    <Login userInfo={user}  onClick={()=>{
-      setisLoginPage(true)
-     }}/>
-
-    </>
-  )
-}
 
 </div>
-
   );
 }
 
